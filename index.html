@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>野良ライゥ゙</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lucide/0.263.1/lucide.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #6d28d9;
+            --accent: #4f46e5;
+            --background: #090909;
+            --card-bg: #111111;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background: var(--background);
+            color: white;
+            overflow-x: hidden;
+        }
+
+        .hero {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at center, var(--primary), transparent 60%),
+                        linear-gradient(45deg, var(--accent), transparent);
+            opacity: 0.3;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 70% 30%, var(--accent), transparent 60%);
+            opacity: 0.2;
+            animation: pulse 8s ease infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.2; }
+            50% { transform: scale(1.2); opacity: 0.3; }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            max-width: 800px;
+            padding: 0 2rem;
+        }
+
+        .hero h1 {
+            font-size: 6rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(to right, #fff, #a5b4fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 2.5rem;
+            opacity: 0;
+            animation: fadeInUp 1s ease 0.3s forwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .button {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            padding: 1.2rem 3rem;
+            border-radius: 9999px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            backdrop-filter: blur(10px);
+            opacity: 0;
+            animation: fadeInUp 1s ease 0.6s forwards;
+        }
+
+        .button:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .concepts {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 8rem 2rem;
+            position: relative;
+        }
+
+        .concepts::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 200px;
+            height: 200px;
+            background: var(--primary);
+            filter: blur(100px);
+            transform: translateX(-50%);
+            opacity: 0.2;
+        }
+
+        .concepts h2 {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 5rem;
+            background: linear-gradient(to right, #fff, #a5b4fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .concept-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            padding: 2rem;
+        }
+
+        .concept-card {
+            background: var(--card-bg);
+            padding: 3rem 2rem;
+            border-radius: 1rem;
+            text-align: center;
+            transition: all 0.4s;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .concept-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transform: translateX(-100%);
+            transition: 0.6s;
+        }
+
+        .concept-card:hover::before {
+            transform: translateX(100%);
+        }
+
+        .concept-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .icon {
+            width: 64px;
+            height: 64px;
+            margin: 0 auto 2rem;
+            color: var(--primary);
+            opacity: 0.9;
+        }
+
+        .concept-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #fff;
+        }
+
+        .concept-card p {
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+            .hero p {
+                font-size: 1.2rem;
+            }
+            .concepts {
+                padding: 4rem 1rem;
+            }
+            .concept-grid {
+                gap: 2rem;
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <img src="/api/placeholder/1920/1080" alt="Background" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.5;">
+        <div class="hero-content">
+            <h1>野良ライブ</h1>
+            <p>アカペラの新しいステージへ。あなたの音楽を世界へ。</p>
+            <button class="button">応募する</button>
+        </div>
+    </div>
+
+    <section class="concepts">
+        <h2>コンセプト</h2>
+        <div class="concept-grid">
+            <div class="concept-card">
+                <i data-lucide="music" class="icon"></i>
+                <h3>安価で参加可能</h3>
+                <p>予算を抑えながら、ライブ体験を提供。誰もが音楽で輝けるステージを実現します。</p>
+            </div>
+            <div class="concept-card">
+                <i data-lucide="users" class="icon"></i>
+                <h3>初心者歓迎</h3>
+                <p>経験豊富なメンバーがサポート。安心して参加できる環境で、アカペラの演奏をサポートします。</p>
+            </div>
+            <div class="concept-card">
+                <i data-lucide="camera" class="icon"></i>
+                <h3>高品質の撮影</h3>
+                <p>高品質の撮影機材技術で、あなたのパフォーマンスを美しく記録し、YouTubeで世界に発信します。</p>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
